@@ -12,10 +12,10 @@ function list( val ) {
 
 program
   .version( '0.0.1' )
-  .option( '-a --allowed-domains <allowed>', 'List of allowed domains', list )
-  .option( '-k --key <key>', 'Set api key' )
-  .option( '-l --location <location>', 'Location of agent you want to run' )
-  .option( '-r --runs <runs>', 'Number of runs to evaluate loading times' )
+  .option( '-a, --allowed-domains <allowed>', 'List of allowed domains', list )
+  .option( '-k, --key <key>', 'Set api key' )
+  .option( '-l, --location <location>', 'Location of agent you want to run' )
+  .option( '-r, --runs <runs>', 'Number of runs to evaluate loading times' )
   .option( '-s, --server <server>', 'Webpagetest server you want to use | default : www.webpagetest.org' )
   .option( '-u, --url <url>', 'Url you want to test' )
   .parse( process.argv );
