@@ -11,7 +11,7 @@ var Bouncer = function( options ) {
       allowedDomains : options.allowedDomains
     },
     wpt : {
-      pollResults : 20,
+      pollResults : 10,
       requests    : true,
       runs        : options.runs || 1,
       server      : options.server || 'www.webpagetest.org',
