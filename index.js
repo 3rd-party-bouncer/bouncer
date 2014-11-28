@@ -21,6 +21,8 @@ var Bouncer = function( options ) {
       timeout     : 480
     }
   }
+
+  this.runner = new Runner( this.options );
 }
 
 Bouncer.prototype.run = function( callback ) {
