@@ -8,12 +8,13 @@ var Bouncer = function( options ) {
   this.options = {
     runner : {
       url            : options.url,
-      allowedDomains : options.allowedDomains
+      allowedDomains : options.allowedDomains,
+      log            : options.log || chalk.bgBlue.white.bold
     },
     wpt : {
       pollResults : 10,
       requests    : true,
-      runs        : options.runs || 1,
+      runs        : options.runs || 5,
       server      : options.server || 'www.webpagetest.org',
       timeout     : 480
     }
@@ -40,7 +41,9 @@ Bouncer.prototype.run = function( callback ) {
   console.log( chalk.bgWhite.black( ' Set WPT server: ' ) );
   console.log( ' -> ' + this.options.wpt.server + '\n' );
 
-  ( new Runner( this.options ) ).run( function( err, data ) {
+  this.runner = new Runner( this.options );
+
+  this.runner.run( function( err, data ) {
     if ( err ) {
       callback( err );
 
