@@ -37,9 +37,9 @@ Bouncer.prototype.run = function( callback ) {
     return;
   }
 
-  console.log( chalk.bgBlue.white.bold( ' (╯°□°)╯  Starting to bounce ' ) );
-  console.log( chalk.bgWhite.black( ' Set WPT server: ' ) );
-  console.log( ' -> ' + this.options.wpt.server + '\n' );
+  this.options.log( ' (╯°□°)╯  Starting to bounce ' );
+  this.options.log( ' Set WPT server: ' );
+  this.options.log( ' -> ' + this.options.wpt.server + '\n' );
 
   this.runner = new Runner( this.options );
 
