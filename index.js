@@ -14,7 +14,7 @@ var Bouncer = function( options ) {
     wpt : {
       pollResults : 10,
       requests    : true,
-      runs        : options.runs || 5,
+      runs        : options.runs || 1,
       server      : options.server || 'www.webpagetest.org',
       timeout     : 480
     }
