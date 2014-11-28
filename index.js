@@ -45,8 +45,6 @@ Bouncer.prototype.run = function( callback ) {
   this.options.runner.log( ' Set WPT server: ' );
   this.options.runner.log( ' -> ' + this.options.wpt.server + '\n' );
 
-  this.runner = new Runner( this.options );
-
   this.runner.run( function( err, data ) {
     if ( err ) {
       callback( err );
