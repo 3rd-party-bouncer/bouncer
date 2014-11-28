@@ -9,7 +9,9 @@ var Bouncer = function( options ) {
     runner : {
       url            : options.url,
       allowedDomains : options.allowedDomains,
-      log            : options.log || chalk.bgBlue.white.bold
+      log            : options.log || function( message ) {
+        console.log( chalk.bgBlue.white.bold( message ) );
+      }
     },
     wpt : {
       pollResults : 10,
@@ -37,9 +39,9 @@ Bouncer.prototype.run = function( callback ) {
     return;
   }
 
-  this.options.log( ' (╯°□°)╯  Starting to bounce ' );
-  this.options.log( ' Set WPT server: ' );
-  this.options.log( ' -> ' + this.options.wpt.server + '\n' );
+  this.options.runner.log( ' (╯°□°)╯  Starting to bounce ' );
+  this.options.runner.log( ' Set WPT server: ' );
+  this.options.runner.log( ' -> ' + this.options.wpt.server + '\n' );
 
   this.runner = new Runner( this.options );
 
