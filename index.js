@@ -10,7 +10,8 @@ var Bouncer = function( options ) {
       url            : options.url,
       allowedDomains : options.allowedDomains,
       log            : options.log || function( message ) {
-        console.log( chalk.bgBlue.white.bold( message ) );
+        console.log( '****************************************' );
+        console.log( message );
       }
     },
     wpt : {
@@ -44,6 +45,24 @@ Bouncer.prototype.run = function( callback ) {
   this.options.runner.log( ' (╯°□°)╯  Starting to bounce ' );
   this.options.runner.log( ' Set WPT server: ' );
   this.options.runner.log( ' -> ' + this.options.wpt.server + '\n' );
+
+  this.runner.on( 'error', function( error ) {
+    this.options.runner.log( 'ERROR ->' +  error );
+  }.bind( this ) );
+
+  this.runner.on( 'evaluated3rdParties', function( thirdParties ) {
+    this.options.runner.log(
+      'EVALUATED 3RD PARTIES ->' + thirdParties.join( ', ' )
+    );
+  }.bind( this ) );
+
+  this.runner.on( 'msg', function( msg ) {
+    this.options.runner.log( 'MSG -> ' + msg );
+  }.bind( this ) );
+
+  this.runner.on( 'data', function( data ) {
+    this.options.runner.log( 'DATA -> ' + JSON.stringify( data, null, 2 ) )
+  }.bind( this ) );
 
   this.runner.run( function( err, data ) {
     if ( err ) {
