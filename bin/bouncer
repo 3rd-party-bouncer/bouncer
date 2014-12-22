@@ -33,7 +33,7 @@ program
     process.exit( 1 );
   }
 
-  console.log( chald.bgGreen.white.bold( 'Bouncer finished!' ) );
+  console.log( chalk.bgGreen.white.bold( 'Bouncer finished!' ) );
   process.exit();
 } );
 
