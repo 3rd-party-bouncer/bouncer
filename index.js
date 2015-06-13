@@ -19,7 +19,8 @@ var Bouncer = function( options ) {
       requests    : true,
       runs        : options.runs || 1,
       server      : options.server || 'www.webpagetest.org',
-      timeout     : 480
+      timeout     : 480,
+      video       : true
     }
   }
 
