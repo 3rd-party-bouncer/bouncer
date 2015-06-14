@@ -4,7 +4,7 @@
   "description": "Bouncer - the CLI tool to measure the impact of 3rd parties",
   "main": "index.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "nodeunit lib/**/*.spec.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,8 @@
     "debug": "^2.1.0",
     "lodash": "^2.4.1",
     "webpagetest": "^0.2.5"
+  },
+  "devDependencies": {
+    "nodeunit": "^0.9.1"
   }
 }
