@@ -26,7 +26,8 @@ var Bouncer = function( options ) {
       requests    : true,
       runs        : options.runs || 1,
       server      : options.server || 'www.webpagetest.org',
-      timeout     : 480
+      timeout     : 480,
+      video       : true
     }
   }
 
@@ -64,11 +65,7 @@ Bouncer.prototype.run = function( callback ) {
   }.bind( this ) );
 
   this.runner.on( 'msg', function( msg ) {
-    this.options.runner.log( 'MSG -> ' + msg );
-  }.bind( this ) );
-
-  this.runner.on( 'data', function( data ) {
-    this.options.runner.log( 'DATA -> ' + JSON.stringify( data, null, 2 ) )
+    this.options.runner.log( msg );
   }.bind( this ) );
 
   this.runner.run( function( err, data ) {
