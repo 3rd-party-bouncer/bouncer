@@ -1,3 +1,10 @@
+/*
+ * bouncer
+ * https://github.com/3rd-party-bouncer/bouncer
+ *
+ * Licensed under the MIT license.
+ */
+
 var Runner = require( './lib/runner' );
 var chalk  = require( 'chalk' );
 var debug  = require( 'debug' )( 'bouncer' );
