@@ -5,6 +5,8 @@
 var Bouncer = require( '..' );
 var chalk   = require( 'chalk' );
 var program = require( 'commander' );
+var fs      = require( 'fs' );
+var path    = require( 'path' );
 
 
 function list( val ) {
@@ -14,8 +16,10 @@ function list( val ) {
 program
   .version( require( '../package.json' ).version )
   .option( '-a, --allowed-domains <allowed>', 'Comma separated list of allowed domains', list )
+  .option( '-d, --debug', 'Enable verbose debug output' )
   .option( '-k, --key <key>', 'Set api key' )
   .option( '-l, --location <location>', 'Location of agent you want to run' )
+  .option( '-o, --output <output>', 'Destingation of result output' )
   .option( '-r, --runs <runs>', 'Number of runs to evaluate loading times [ 1 ]' )
   .option( '-s, --server <server>', 'Webpagetest server you want to use [ www.webpagetest.org ]' )
   .option( '-u, --url <url>', 'Url you want to bounce' )
@@ -27,16 +31,24 @@ if ( process.argv.length === 2 ) {
 
 ( new Bouncer( {
   allowedDomains : program.allowedDomains,
+  debug          : program.debug,
   key            : program.key,
   location       : program.location,
   runs           : program.runs,
   server         : program.server,
   url            : program.url
-} ) ).run( function( err ) {
+} ) ).run( function( err, data ) {
   if ( err ) {
     throw err;
   }
 
-  console.log( chalk.bgGreen.white.bold( 'Bouncer finished!' ) );
+  console.log( chalk.green( '(╯°□°)╯ ' ) + 'Bouncer finished!' );
+
+  if ( program.output ) {
+    var outputPath = path.resolve( program.output );
+
+    fs.writeFileSync( outputPath, JSON.stringify( data ) );
+    console.log( chalk.green( '(╯°□°)╯ ' ) + 'Written result to ' + chalk.green( outputPath ) );
+  }
 } );
 
