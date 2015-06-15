@@ -16,6 +16,9 @@ coverage
 # custom keys stored locally
 keys.txt
 
+# result file
+result.json
+
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
