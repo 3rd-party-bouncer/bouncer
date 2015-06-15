@@ -25,6 +25,11 @@ program
   .option( '-u, --url <url>', 'Url you want to bounce' )
   .parse( process.argv );
 
+program.on( '--help', function() {
+  console.log( '  Example:' );
+  console.log( '    $ bouncer --url www.some.url --allowed-domains www.some.url --key xxx --server xx.compute-1.amazonaws.com --output ./result.json' );
+} );
+
 if ( process.argv.length === 2 ) {
   program.help();
 }
