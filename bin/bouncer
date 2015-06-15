@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
+'use strict';
+
 var Bouncer = require( '..' );
 var chalk   = require( 'chalk' );
-var debug   = require( 'debug' )( 'bin' );
 var program = require( 'commander' );
 
 
@@ -33,11 +34,9 @@ if ( process.argv.length === 2 ) {
   url            : program.url
 } ) ).run( function( err ) {
   if ( err ) {
-    console.log( chalk.bgRed( err ) );
-    process.exit( 1 );
+    throw err;
   }
 
   console.log( chalk.bgGreen.white.bold( 'Bouncer finished!' ) );
-  process.exit();
 } );
 

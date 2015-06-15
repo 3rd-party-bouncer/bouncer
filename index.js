@@ -5,6 +5,8 @@
  * Licensed under the MIT license.
  */
 
+'use strict';
+
 var Runner = require( './lib/runner' );
 var chalk  = require( 'chalk' );
 var debug  = require( 'debug' )( 'bouncer' );
@@ -29,10 +31,10 @@ var Bouncer = function( options ) {
       timeout     : 480,
       video       : true
     }
-  }
+  };
 
   this.runner = new Runner( this.options );
-}
+};
 
 Bouncer.prototype.run = function( callback ) {
   if ( !this.options.runner.url ) {
@@ -72,6 +74,5 @@ Bouncer.prototype.run = function( callback ) {
     callback( null, data );
   } );
 };
-
 
 module.exports = Bouncer;
