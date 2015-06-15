@@ -36,18 +36,14 @@ var Bouncer = function( options ) {
 
 Bouncer.prototype.run = function( callback ) {
   if ( !this.options.runner.url ) {
-    callback( ' -> No url to run against defined <- ' );
-
-    return;
+    return callback( ' -> No url to run against defined <- ' );
   }
 
   if (
     !this.options.runner.allowedDomains ||
     !this.options.runner.allowedDomains.length
   ) {
-    callback( ' -> No allowed domains set <- ' );
-
-    return;
+    return callback( ' -> No allowed domains set <- ' );
   }
 
   this.options.runner.log( ' (╯°□°)╯  Starting to bounce ' );
@@ -70,9 +66,7 @@ Bouncer.prototype.run = function( callback ) {
 
   this.runner.run( function( err, data ) {
     if ( err ) {
-      callback( err );
-
-      return;
+      return callback( err );
     }
 
     callback( null, data );
