@@ -35,7 +35,7 @@ var Bouncer = function( options ) {
       key         : options.key || '',
       pollResults : 10,
       requests    : true,
-      runs        : options.runs || 1,
+      runs        : +options.runs || 1,
       server      : options.server || 'www.webpagetest.org',
       timeout     : 480,
       video       : true
