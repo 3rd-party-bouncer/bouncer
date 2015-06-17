@@ -4,8 +4,9 @@
   "description": "Bouncer - the CLI tool to measure the impact of 3rd parties",
   "main": "index.js",
   "scripts": {
+    "inspect": "jsinspect -t 15 --ignore \"spec.js\" index.js lib/**/*.js",
     "lint": "eslint ./lib ./bin/bouncer index.js",
-    "test": "npm run lint && nodeunit index.spec.js lib/*.spec.js lib/**/*.spec.js"
+    "test": "npm run lint && npm run inspect && nodeunit index.spec.js lib/*.spec.js lib/**/*.spec.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "eslint": "^0.23.0",
+    "jsinspect": "^0.6.0",
     "nodeunit": "^0.9.1",
     "proxyquire": "^1.5.0"
   }
