@@ -16,14 +16,14 @@ function list( val ) {
 program
   .version( require( '../package.json' ).version )
   .description( 'Track your 3rd parties the easy way' )
-  .option( '-a, --allowed-domains <allowed>', 'Comma separated list of allowed domains', list )
+  .option( '-a, --allowed-domains <allowed>', 'Comma separated list of allowed domains (required)', list )
   .option( '-d, --debug', 'Enable verbose debug output' )
   .option( '-k, --key <key>', 'Set api key' )
   .option( '-l, --location <location>', 'Location of agent you want to run' )
   .option( '-o, --output <output>', 'Destingation of result output' )
   .option( '-r, --runs <runs>', 'Number of runs to evaluate loading times [ 1 ]' )
   .option( '-s, --server <server>', 'Webpagetest server you want to use [ www.webpagetest.org ]' )
-  .option( '-u, --url <url>', 'Url you want to bounce' )
+  .option( '-u, --url <url>', 'Url you want to bounce (required)' )
   .on( '--help', function() {
     console.log( '  Example:' );
     console.log( '    $ bouncer --url www.some.url --allowed-domains www.some.url --key xxx --server xx.compute-1.amazonaws.com --output ./result.json' );
