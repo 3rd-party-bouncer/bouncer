@@ -58,31 +58,9 @@ Bouncer.prototype.run = function( callback ) {
     return callback( new Error( ' -> No allowed domains set <- ' ) );
   }
 
-  this.options.runner.log( chalk.green( '(╯°□°)╯ ' ) + 'Starting to bounce ' );
-  this.options.runner.log( 'Set WPT server -> ' + this.options.wpt.server );
-  this.options.runner.log( 'Set URL -> ' + this.options.runner.url );
-
-
-  // TODO move these into executable
-  this.runner.on( 'error', function( error ) {
-    this.options.runner.log( chalk.red( 'ERROR' ) +  error );
-  }.bind( this ) );
-
-  this.runner.on( 'evaluated3rdParties', function( thirdParties ) {
-    this.options.runner.log(
-      'Evaluated 3rd parties -> ' + thirdParties.join( ', ' )
-    );
-  }.bind( this ) );
-
-  this.runner.on( 'msg', function( msg ) {
-    this.options.runner.log( chalk.yellow( '(╯°□°)╯ ' ) + msg );
-  }.bind( this ) );
-
-  if ( this.options.debug ) {
-    this.runner.on( 'debug', function( msg ) {
-      this.options.runner.log( chalk.red( 'DEBUG:' ) + msg );
-    }.bind( this ) );
-  }
+  this.emit( 'msg', 'Starting to bounce' );
+  this.emit( 'msg', 'Set WPT server -> ' + this.options.wpt.server );
+  this.emit( 'msg', 'Set URL -> ' + this.options.runner.url );
 
   this.runner.run( function( err, data ) {
     if ( err ) {
