@@ -71,6 +71,21 @@ module.exports = {
           bouncer.runner.emit( 'error', 'A random error' );
         },
 
+        data : function( test ) {
+          var bouncer = new Bouncer( {
+            url            : 'foo',
+            allowedDomains : [ 'bar', 'baz' ]
+          } );
+
+          bouncer.on( 'data', function( msg ) {
+            test.equal( msg, 'Received data' );
+
+            test.done();
+          } );
+
+          bouncer.runner.emit( 'data', 'Received data' );
+        },
+
         debug : function( test ) {
           var bouncer = new Bouncer( {
             url            : 'foo',

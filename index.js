@@ -16,7 +16,7 @@ var util         = require( 'util' );
  * Events to be emitted to the outside
  * @type {Array}
  */
-var events = [ 'msg', 'error', 'debug' ];
+var events = [ 'msg', 'error', 'debug', 'data' ];
 
 
 /**
