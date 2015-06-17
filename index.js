@@ -8,25 +8,31 @@
 'use strict';
 
 var Runner       = require( './lib/runner' );
-var chalk        = require( 'chalk' );
 var EventEmitter = require( 'events' ).EventEmitter;
 var util         = require( 'util' );
+
+
+/**
+ * Events to be emitted to the outside
+ * @type {Array}
+ */
+var events = [ 'msg', 'error', 'debug' ];
+
 
 /**
  * Constructor
  * @param {Object} options options
+ *
+ * @tested
  */
 var Bouncer = function( options ) {
   this.options = {
     runner : {
       allowedDomains : options.allowedDomains,
-      debug          : options.debug,
-      url            : options.url,
-      log            : options.log || function( message ) {
-        console.log( message );
-      }
+      url            : options.url
     },
     wpt : {
+      key         : options.key || '',
       pollResults : 10,
       requests    : true,
       runs        : options.runs || 1,
