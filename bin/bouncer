@@ -15,6 +15,7 @@ function list( val ) {
 
 program
   .version( require( '../package.json' ).version )
+  .description( 'Track your 3rd parties the easy way' )
   .option( '-a, --allowed-domains <allowed>', 'Comma separated list of allowed domains', list )
   .option( '-d, --debug', 'Enable verbose debug output' )
   .option( '-k, --key <key>', 'Set api key' )
