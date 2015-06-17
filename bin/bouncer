@@ -50,7 +50,7 @@ bouncer.on( 'msg', function( msg ) {
 
 if ( program.debug ) {
   bouncer.on( 'debug', function( msg ) {
-    this.options.runner.log( chalk.cyan( ' ಠ_ಠ  DEBUG: ' ) + msg );
+    console.log( chalk.cyan( ' ಠ_ಠ  DEBUG: ' ) + msg );
   } );
 }
 
