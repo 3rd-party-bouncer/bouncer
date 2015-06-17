@@ -43,14 +43,25 @@ var Bouncer = function( options ) {
   };
 
   this.runner = new Runner( this.options );
+
+
+  // pipe all events to the outer world
+  events.forEach( function( eventName ) {
+    this.runner.on( eventName, function( msg ) {
+      this.emit( eventName, msg );
+    }.bind( this ) );
+  }, this );
 };
 
 util.inherits( Bouncer, EventEmitter );
+
 
 /**
  * Kick of the bouncer
  *
  * @param  {Function} callback callback
+ *
+ * @tested
  */
 Bouncer.prototype.run = function( callback ) {
   if ( !this.options.runner.url ) {
