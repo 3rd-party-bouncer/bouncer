@@ -47,13 +47,13 @@ module.exports = {
             allowedDomains : [ 'bar', 'baz' ]
           } );
 
-          bouncer.on( 'msg', function( msg ) {
+          bouncer.on( 'bouncer:msg', function( msg ) {
             test.equal( msg, 'A random message' );
 
             test.done();
           } );
 
-          bouncer.runner.emit( 'msg', 'A random message' );
+          bouncer.runner.emit( 'bouncer:msg', 'A random message' );
         },
 
         error : function( test ) {
@@ -62,13 +62,13 @@ module.exports = {
             allowedDomains : [ 'bar', 'baz' ]
           } );
 
-          bouncer.on( 'error', function( msg ) {
+          bouncer.on( 'bouncer:error', function( msg ) {
             test.equal( msg, 'A random error' );
 
             test.done();
           } );
 
-          bouncer.runner.emit( 'error', 'A random error' );
+          bouncer.runner.emit( 'bouncer:error', 'A random error' );
         },
 
         data : function( test ) {
@@ -77,13 +77,13 @@ module.exports = {
             allowedDomains : [ 'bar', 'baz' ]
           } );
 
-          bouncer.on( 'data', function( msg ) {
+          bouncer.on( 'bouncer:data', function( msg ) {
             test.equal( msg, 'Received data' );
 
             test.done();
           } );
 
-          bouncer.runner.emit( 'data', 'Received data' );
+          bouncer.runner.emit( 'bouncer:data', 'Received data' );
         },
 
         debug : function( test ) {
@@ -92,13 +92,13 @@ module.exports = {
             allowedDomains : [ 'bar', 'baz' ]
           } );
 
-          bouncer.on( 'debug', function( msg ) {
+          bouncer.on( 'bouncer:debug', function( msg ) {
             test.equal( msg, 'A random debug message' );
 
             test.done();
           } );
 
-          bouncer.runner.emit( 'debug', 'A random debug message' );
+          bouncer.runner.emit( 'bouncer:debug', 'A random debug message' );
         }
       }
     },

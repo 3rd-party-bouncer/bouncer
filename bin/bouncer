@@ -47,17 +47,17 @@ var bouncer = new Bouncer( {
   url            : program.url
 } );
 
-bouncer.on( 'error', function( error ) {
-  console.log( chalk.red( '( ︶︿︶)  ERROR:' ) +  error );
+bouncer.on( 'bouncer:error', function( error ) {
+  console.log( chalk.red( '( ︶︿︶) ERROR: ' ) +  error );
 } );
 
-bouncer.on( 'msg', function( msg ) {
-  console.log( chalk.yellow( '(╯°□°)╯ MSG: ' ) + msg );
+bouncer.on( 'bouncer:msg', function( msg ) {
+  console.log( chalk.yellow( ' (╯°□°)╯  MSG: ' ) + msg );
 } );
 
 if ( program.debug ) {
-  bouncer.on( 'debug', function( msg ) {
-    console.log( chalk.cyan( ' ಠ_ಠ  DEBUG: ' ) + msg );
+  bouncer.on( 'bouncer:debug', function( msg ) {
+    console.log( chalk.cyan( '  ಠ_ಠ   DEBUG: ' ) + msg );
   } );
 }
 

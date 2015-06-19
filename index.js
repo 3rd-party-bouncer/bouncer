@@ -47,8 +47,9 @@ var Bouncer = function( options ) {
 
   // pipe all events to the outer world
   events.forEach( function( eventName ) {
-    this.runner.on( eventName, function( msg ) {
-      this.emit( eventName, msg );
+    var bouncerName = 'bouncer:' + eventName;
+    this.runner.on( bouncerName, function( msg ) {
+      this.emit( bouncerName, msg );
     }.bind( this ) );
   }, this );
 };
