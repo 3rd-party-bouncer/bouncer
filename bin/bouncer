@@ -1,5 +1,12 @@
 #!/usr/bin/env node
 
+/*
+ * bouncer
+ * https://github.com/3rd-party-bouncer/bouncer
+ *
+ * Licensed under the MIT license.
+ */
+
 'use strict';
 
 var Bouncer = require( '..' );
