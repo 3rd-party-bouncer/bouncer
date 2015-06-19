@@ -39,7 +39,6 @@ program
 
 var bouncer = new Bouncer( {
   allowedDomains : program.allowedDomains,
-  debug          : program.debug,
   key            : program.key,
   location       : program.location,
   runs           : program.runs,
