@@ -67,11 +67,7 @@ bouncer.run( function( err, data ) {
 
   console.log( chalk.green( '(╯°□°)╯ ' ) + 'Bouncer finished!' );
 
-  if ( program.output ) {
-    var outputPath = path.resolve( program.output );
-
-    fs.writeFileSync( outputPath, JSON.stringify( data ) );
-    console.log( chalk.green( '(╯°□°)╯ ' ) + 'Written result to ' + chalk.green( outputPath ) );
-  }
+  fs.writeFileSync( outputPath, JSON.stringify( data ) );
+  console.log( chalk.green( '(╯°□°)╯ ' ) + 'Written result to ' + chalk.green( outputPath ) );
 } );
 ```
