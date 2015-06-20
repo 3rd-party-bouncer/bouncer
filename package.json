@@ -1,5 +1,5 @@
 {
-  "name": "bouncer",
+  "name": "@3rd-party-bouncer/bouncer",
   "version": "1.0.0",
   "description": "Bouncer - the CLI tool to measure the impact of 3rd parties",
   "main": "index.js",
