@@ -33,6 +33,7 @@ var Bouncer = function( options ) {
     },
     wpt : {
       key         : options.key || '',
+      location    : options.location,
       pollResults : 10,
       requests    : true,
       runs        : +options.runs || 1,
