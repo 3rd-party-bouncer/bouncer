@@ -22,12 +22,17 @@ module.exports = {
           key            : 'xxx',
           runs           : 42,
           server         : 'somewebpagetest.instance',
-          url            : 'perf-tooling.today'
+          url            : 'http://www.perf-tooling.today'
         };
 
         var bouncer = new Bouncer( options );
 
         test.equal( bouncer.options.runner.allowedDomains, options.allowedDomains );
+        test.equal( bouncer.options.runner.allowedDomains.length, 3 );
+        test.equal( bouncer.options.runner.allowedDomains[ 0 ], 'perf-tooling.today' );
+        test.equal( bouncer.options.runner.allowedDomains[ 1 ], 'foo' );
+        test.equal( bouncer.options.runner.allowedDomains[ 2 ], 'bar' );
+
         test.equal( bouncer.options.runner.url, options.url );
 
         test.equal( bouncer.options.wpt.key, options.key );
@@ -100,49 +105,22 @@ module.exports = {
 
           bouncer.runner.emit( 'bouncer:debug', 'A random debug message' );
         }
+      },
+      error : {
+        noUrlError : function ( test ) {
+          test.expect( 1 );
+
+          test.throws( function() {
+            new Bouncer( {} );
+          }, Error );
+
+          test.done();
+        }
       }
     },
 
 
     run : {
-      optionErrors : {
-        noUrlError : function( test ) {
-          var bouncer = new Bouncer( {} );
-
-          var callback = function( error ) {
-            test.equal( error instanceof Error, true );
-            test.equal( error.message, ' -> No url to run against defined <- ' );
-            test.done();
-          }
-
-          bouncer.run( callback );
-        },
-
-        noAllowedDomainsError : function( test ) {
-          var bouncer = new Bouncer( { url : 'fooo' } );
-
-          var callback = function( error ) {
-            test.equal( error instanceof Error, true );
-            test.equal( error.message, ' -> No allowed domains set <- ' );
-            test.done();
-          }
-
-          bouncer.run( callback );
-        },
-
-        noAllowedDomainsLengthError : function( test ) {
-          var bouncer = new Bouncer( { url : 'fooo', allowedDomains : [] } );
-
-          var callback = function( error ) {
-            test.equal( error instanceof Error, true );
-            test.equal( error.message, ' -> No allowed domains set <- ' );
-            test.done();
-          }
-
-          bouncer.run( callback );
-        }
-      },
-
       callback : {
         success : function( test ) {
           var RunnerStub = function() {

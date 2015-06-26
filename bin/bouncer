@@ -23,7 +23,7 @@ function list( val ) {
 program
   .version( require( '../package.json' ).version )
   .description( 'Track your 3rd parties the easy way' )
-  .option( '-a, --allowed-domains <allowed>', 'Comma separated list of allowed domains (required)', list )
+  .option( '-a, --allowed-domains <allowed>', 'Comma separated list of allowed 3rd party domains', list )
   .option( '-d, --debug', 'Enable verbose debug output' )
   .option( '-k, --key <key>', 'Set api key' )
   .option( '-l, --location <location>', 'Location of agent you want to run' )

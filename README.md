@@ -20,7 +20,7 @@ $ bouncer --help
 
     -h, --help                       output usage information
     -V, --version                    output the version number
-    -a, --allowed-domains <allowed>  Comma separated list of allowed domains (required)
+    -a, --allowed-domains <allowed>  Comma separated list of allowed 3rd party domains
     -d, --debug                      Enable verbose debug output
     -k, --key <key>                  Set api key
     -l, --location <location>        Location of agent you want to run

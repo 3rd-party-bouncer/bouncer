@@ -26,6 +26,18 @@ var events = [ 'msg', 'error', 'debug', 'data' ];
  * @tested
  */
 var Bouncer = function( options ) {
+  options = options || {};
+
+  if ( !options.url ) {
+    throw new Error( ' -> No url to run against defined <- ' );
+  }
+
+  options.allowedDomains = options.allowedDomains || [];
+
+  options.allowedDomains.unshift(
+    options.url.replace( /^(http[s]{0,1}:\/\/){0,1}(www.){0,1}/, '' )
+  );
+
   this.options = {
     runner : {
       allowedDomains : options.allowedDomains,
@@ -66,17 +78,6 @@ util.inherits( Bouncer, EventEmitter );
  * @tested
  */
 Bouncer.prototype.run = function( callback ) {
-  if ( !this.options.runner.url ) {
-    return callback( new Error( ' -> No url to run against defined <- ' ) );
-  }
-
-  if (
-    !this.options.runner.allowedDomains ||
-    !this.options.runner.allowedDomains.length
-  ) {
-    return callback( new Error( ' -> No allowed domains set <- ' ) );
-  }
-
   this.emit( 'msg', 'Starting to bounce' );
   this.emit( 'msg', 'Set WPT server -> ' + this.options.wpt.server );
   this.emit( 'msg', 'Set URL -> ' + this.options.runner.url );
