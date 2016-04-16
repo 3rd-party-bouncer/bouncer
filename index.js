@@ -10,6 +10,7 @@
 var Runner       = require( './lib/runner' );
 var EventEmitter = require( 'events' ).EventEmitter;
 var util         = require( 'util' );
+var parseDomain  = require( 'parse-domain' );
 
 
 /**
@@ -33,15 +34,13 @@ var Bouncer = function( options ) {
   }
 
   options.allowedDomains = options.allowedDomains || [];
-
-  options.allowedDomains.unshift(
-    options.url.replace( /^(http[s]{0,1}:\/\/){0,1}(www.){0,1}/, '' )
-  );
+  options.allowedDomains = options.allowedDomains.map( parseDomain );
 
   this.options = {
     runner : {
       allowedDomains : options.allowedDomains,
-      url            : options.url
+      url            : options.url,
+      domain         : parseDomain( options.url )
     },
     wpt : {
       key         : options.key || '',

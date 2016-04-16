@@ -22,6 +22,7 @@
     "chalk": "^0.5.1",
     "commander": "^2.5.0",
     "lodash": "^2.4.1",
+    "parse-domain": "^0.2.1",
     "webpagetest": "^0.2.5"
   },
   "devDependencies": {

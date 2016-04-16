@@ -18,7 +18,7 @@ module.exports = {
     constructor : {
       setOptions : function( test ) {
         var options = {
-          allowedDomains : [ 'foo', 'bar' ],
+          allowedDomains : [ 'foo.com', 'bar.io' ],
           key            : 'xxx',
           runs           : 42,
           server         : 'somewebpagetest.instance',
@@ -28,10 +28,11 @@ module.exports = {
         var bouncer = new Bouncer( options );
 
         test.equal( bouncer.options.runner.allowedDomains, options.allowedDomains );
-        test.equal( bouncer.options.runner.allowedDomains.length, 3 );
-        test.equal( bouncer.options.runner.allowedDomains[ 0 ], 'perf-tooling.today' );
-        test.equal( bouncer.options.runner.allowedDomains[ 1 ], 'foo' );
-        test.equal( bouncer.options.runner.allowedDomains[ 2 ], 'bar' );
+        test.equal( bouncer.options.runner.allowedDomains.length, 2 );
+        test.equal( bouncer.options.runner.allowedDomains[ 0 ].domain, 'foo' );
+        test.equal( bouncer.options.runner.allowedDomains[ 0 ].tld, 'com' );
+        test.equal( bouncer.options.runner.allowedDomains[ 1 ].domain, 'bar' );
+        test.equal( bouncer.options.runner.allowedDomains[ 1 ].tld, 'io' );
 
         test.equal( bouncer.options.runner.url, options.url );
 

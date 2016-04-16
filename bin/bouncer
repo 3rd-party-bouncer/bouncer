@@ -74,4 +74,3 @@ bouncer.run( function( err, data ) {
     console.log( chalk.green( '(╯°□°)╯ ' ) + 'Written result to ' + chalk.green( outputPath ) );
   }
 } );
-
